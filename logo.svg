@@ -1,0 +1,28 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="50" fill="#1f1f1f" rx="5"/>
+  
+  <!-- Truck Icon -->
+  <g transform="translate(10, 12)">
+    <!-- Truck Body -->
+    <rect x="5" y="8" width="15" height="8" fill="#dc2626" rx="1"/>
+    <!-- Truck Cab -->
+    <rect x="0" y="10" width="8" height="6" fill="#dc2626" rx="1"/>
+    <!-- Truck Wheels -->
+    <circle cx="7" cy="18" r="2" fill="#fbbf24"/>
+    <circle cx="17" cy="18" r="2" fill="#fbbf24"/>
+    <!-- Truck Details -->
+    <rect x="1" y="11" width="2" height="2" fill="#ffffff"/>
+    <rect x="6" y="9" width="8" height="1" fill="#ffffff"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="45" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#dc2626">CALL</text>
+  <text x="45" y="33" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#fbbf24">DIESEL</text>
+  <text x="45" y="46" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#ffffff">DUDES</text>
+  
+  <!-- Accent Line -->
+  <line x1="110" y1="15" x2="185" y2="15" stroke="#fbbf24" stroke-width="2"/>
+  <text x="115" y="30" font-family="Arial, sans-serif" font-size="8" fill="#ffffff">MOBILE REPAIR</text>
+  <text x="125" y="40" font-family="Arial, sans-serif" font-size="8" fill="#fbbf24">24/7 SERVICE</text>
+</svg>
