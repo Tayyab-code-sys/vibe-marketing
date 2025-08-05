@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Diesel Dudes - Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inline CSS for demo - key styles only */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #dc2626;
+            --secondary-color: #1f1f1f;
+            --accent-color: #fbbf24;
+            --text-white: #ffffff;
+            --bg-light: #f9fafb;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #1f1f1f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--text-white);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar {
+            background: var(--secondary-color);
+            color: var(--text-white);
+            padding: 8px 0;
+            font-size: 0.875rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-brand h1 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #1f1f1f;
+            font-weight: 500;
+        }
+
+        .emergency-btn {
+            background: var(--primary-color) !important;
+            color: var(--text-white) !important;
+            padding: 8px 16px !important;
+            border-radius: 4px !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.8) 0%, rgba(220, 38, 38, 0.6) 100%);
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            color: var(--text-white);
+        }
+
+        .hero-content .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: var(--text-white);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: var(--text-white);
+            margin-left: 1rem;
+        }
+
+        .emergency-card {
+            background: var(--text-white);
+            padding: 2rem;
+            border-radius: 12px;
+            color: #1f1f1f;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .emergency-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .emergency-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .emergency-form input,
+        .emergency-form textarea {
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: var(--text-white);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--text-white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--text-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> (888) DIESEL-1</span>
+                    <span><i class="fas fa-clock"></i> 24/7 Emergency Service</span>
+                    <span><i class="fas fa-envelope"></i> service@calldieseldudes.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1>🚛 Call Diesel Dudes</h1>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#emergency" class="emergency-btn">24/7 Emergency</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="highlight">MOBILE DIESEL EXPERTS</span><br>
+                        WE COME TO YOU
+                    </h1>
+                    <p class="hero-subtitle">
+                        Professional Mobile Diesel Repair & Roadside Assistance<br>
+                        24/7 Emergency Service • Fleet Maintenance • Engine Diagnostics
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="tel:888-343-7351" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Call Now (888) DIESEL-1
+                        </a>
+                        <a href="#services" class="btn btn-secondary">
+                            <i class="fas fa-wrench"></i> Our Services
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-form">
+                    <div class="emergency-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Emergency Service Request</h3>
+                        <form class="emergency-form">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <input type="text" placeholder="Vehicle Type & Year">
+                            <input type="text" placeholder="Current Location">
+                            <textarea placeholder="Describe the Problem" rows="3"></textarea>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-bolt"></i> Request Emergency Service
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Mobile Diesel Services</h2>
+                <p>Professional repair and maintenance services brought directly to your location</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-moving"></i>
+                    </div>
+                    <h3>Emergency Roadside Assistance</h3>
+                    <p>24/7 emergency response for breakdowns, accidents, and urgent repairs. We'll get you back on the road fast.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Engine Repair & Diagnostics</h3>
+                    <p>Expert diagnosis and repair of diesel engines from all major manufacturers using state-of-the-art equipment.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Fleet Maintenance</h3>
+                    <p>Scheduled maintenance programs to keep your fleet running efficiently and minimize costly downtime.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Transmission & Drivetrain</h3>
+                    <p>Complete transmission services, clutch repairs, and drivetrain maintenance for optimal performance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Electrical Systems</h3>
+                    <p>Advanced electrical diagnostics and repair for modern diesel trucks and commercial vehicles.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>DPF & Emissions</h3>
+                    <p>Diesel Particulate Filter cleaning, regeneration, and emissions system maintenance to keep you compliant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding: 3rem; background: #1f1f1f; color: white;">
+        <h2>🚛 Call Diesel Dudes</h2>
+        <p>Professional Mobile Diesel Repair Services</p>
+        <p><strong>24/7 Emergency:</strong> (888) DIESEL-1</p>
+        <p><strong>Email:</strong> service@calldieseldudes.com</p>
+    </div>
+
+</body>
+</html>
